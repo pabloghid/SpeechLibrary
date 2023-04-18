@@ -1,6 +1,7 @@
 import pyttsx3
 import speech_recognition as sr
 from models.OpenLibrary import OpenLibrary
+from models.Author import Author
 import helpers
 
 ol = OpenLibrary()
@@ -26,25 +27,7 @@ def VoiceSearch():
                 print("IA: o que você quer fazer?")
                 audio = recog.listen(mic)
                 text = recog.recognize_google(audio, language='pt-BR')
-                print("IA: Voce disse '"+text+"'")
-                SpeakText(text)
-                match text:
-                    case "buscar livro":
-                        print("IA: Que livro voce deseja procurar?")
-                        audio = recog.listen(mic)
-                        text = recog.recognize_google(audio, language='pt-BR')
-                        books = ol.search_books_by_title(text)
-                        print(books)
-                        response = helpers.create_list_books(books)
-                    case "buscar autor":
-                        print("IA: Que autor voce deseja procurar?")
-                        audio = recog.listen(mic)
-                        text = recog.recognize_google(audio, language='pt-BR')
-                        response = ol.search_books_by_author(text)
-                    case _:
-                        print("IA: Não há função para '"+text+"'")
-                        
-                return response
+                return text
                     
 
         except sr.RequestError as e:
@@ -52,3 +35,16 @@ def VoiceSearch():
 
         except sr.UnknownValueError:
             print("Um erro desconhecido ocorreu")
+
+def search_book():
+    text = VoiceSearch()
+    books = ol.search_books_by_title(text)
+    response = helpers.create_list_books(books)
+    return response
+
+def search_author():
+    text = VoiceSearch()
+    authors = ol.search_author(text)
+    response = helpers.create_list_authors(authors)
+    print(response)
+    return response

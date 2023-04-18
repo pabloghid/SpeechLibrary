@@ -13,10 +13,22 @@
 
 <body>
     {% for info in response %}
+    {% if info.title %}
     <h2>{{ info.title }}</h2>
     <p>{{ info.author }}</p>
-    <p>{{ info.isbn }}</p>
+    <img src="https://covers.openlibrary.org/b/isbn/{{ info.cover }}-M.jpg" alt=""></img>
+    <p>{{ info.description }}</p>
+    {% else %}
+    <h2>{{ info.name }}</h2>
+    <p>{{ info.birth_date }}</p>
+    <p>{{ info.top_work }}</p>
+    {% for book in info.books %}
+    <p>{{ book.title }}</p>
     {% endfor %}
+    <img src="https://covers.openlibrary.org/a/olid/{{ info.key }}-M.jpg" alt="">
+    {% endif %}
+    {% endfor %}
+
 </br>
     <h2>{{ response }}</h2>
 </body>

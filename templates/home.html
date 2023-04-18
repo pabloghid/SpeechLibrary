@@ -15,8 +15,11 @@
     <h1>Livraria por voz</h1>
     <p>Busque livros por voz</p>
     <p>fale sua função e depois o nome</p>
-    <form method="POST" action="{{ url_for('search') }}">
-		<button type="submit" class="btn btn-primary btn-lg">Pesquisa por voz</button>
+    <form method="POST" action="{{ url_for('search', type='books' ) }}">
+		<button type="submit" class="btn btn-primary btn-lg">Pesquisar livro</button>
+	</form>
+    <form method="POST" action="{{ url_for('search', type='authors') }}">
+		<button type="submit" class="btn btn-primary btn-lg">Pesquisar autor</button>
 	</form>
 
 </body>
