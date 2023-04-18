@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<title>SpeechLibrary</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<h1>SpeechLibrary</h1>
+		<form method="POST" action="{{ url_for('search', type='books' ) }}">
+			<button type="submit" class="btn btn-primary">Buscar livro por voz</button>
+		</form>
+		<br>
+		<form method="POST" action="{{ url_for('search', type='authors') }}">
+			<button type="submit" class="btn btn-primary">Buscar autor por voz</button>
+		</form>
+	</div>
+
+</body>
+</html>

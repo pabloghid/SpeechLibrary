@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Busca</title>
+</head>
+
+<body>
+    <div class="container">
+        {% if type == 'book' %}
+        <h1>Lista de Livros</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Imagem</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for info in response %}
+
+                <tr>
+                    <td>{{ info.title }}</h2>
+                    <td>{{ info.author }}</td>
+                    {% if info.description == 'None' %}
+                    <td>Sem descrição</td>
+                    {% else %}
+                    <td>{{ info.description }}</td>
+                    {% endif %}
+                    <td>
+                        <img src="https://covers.openlibrary.org/b/isbn/{{ info.cover }}-M.jpg" alt=""></img>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h1>Lista de Autores</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome do autor</th>
+                    <th scope="col">Data de nascimento</th>
+                    <th scope="col">Melhor livro</th>
+                    <th scope="col">Livros</th>
+                    <th scope="col">Imagem do autor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for info in response %}
+                <tr>
+                    <td>{{ info.name }}</td>
+                    <td>{{ info.birth_date }}</td>
+                    <td>{{ info.top_work }}</td>
+                    <td>
+                        {% for book in info.books %}
+                        {{ book.title }}, 
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <img src="https://covers.openlibrary.org/a/olid/{{ info.key }}-M.jpg" alt="">
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% endif %}
+    </div>
+    </br>
+</body>
+
+</html>
