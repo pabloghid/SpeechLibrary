@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Document</title>
+	<title>SpeechLibrary</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <h1>Livraria por voz</h1>
-    <p>Busque livros por voz</p>
-    <p>fale sua função e depois o nome</p>
-    <form method="POST" action="{{ url_for('search', type='books' ) }}">
-		<button type="submit" class="btn btn-primary btn-lg">Pesquisar livro</button>
-	</form>
-    <form method="POST" action="{{ url_for('search', type='authors') }}">
-		<button type="submit" class="btn btn-primary btn-lg">Pesquisar autor</button>
-	</form>
+    <div class="container">
+		<h1>SpeechLibrary</h1>
+		<form method="POST" action="{{ url_for('search', type='books' ) }}">
+			<button type="submit" class="btn btn-primary">Buscar livro por voz</button>
+		</form>
+		<br>
+		<form method="POST" action="{{ url_for('search', type='authors') }}">
+			<button type="submit" class="btn btn-primary">Buscar autor por voz</button>
+		</form>
+	</div>
 
 </body>
-
 </html>
